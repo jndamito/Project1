@@ -1,0 +1,10 @@
+SMAP
+confirm_jsp.java
+JSP
+*S JSP
+*F
++ 0 confirm.jsp
+src/main/webapp/pages/confirm.jsp
+*L
+2,11:116,0
+*E

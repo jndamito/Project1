@@ -1,0 +1,7 @@
+organization=team12
+projectKey=team12
+serverUrl=https://sonarcloud.io
+serverVersion=8.0.0.47490
+dashboardUrl=https://sonarcloud.io/dashboard?id=team12
+ceTaskId=AYssHm2fCwZMU_ibUVFX
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AYssHm2fCwZMU_ibUVFX

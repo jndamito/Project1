@@ -1,0 +1,12 @@
+SMAP
+user_jsp.java
+JSP
+*S JSP
+*F
++ 0 user.jsp
+src/main/webapp/pages/user.jsp
+*L
+2,9:116,0
+10:117
+11,12:118,0
+*E
