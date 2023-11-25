@@ -18,7 +18,7 @@ variable "azs" {
 
 variable "private_subnet_names" {
   type = list(string)
-  default = [ "Private_subnet1_nginx", "Private_subnet2_nginx", "Private_subnet3_app", "Private_subnet4_app", "Private_subnet5_nlb", "Private_subnet6_nlb", "Private_subnet6_maven" ]
+  default = [ "Private_subnet1_nlb", "Private_subnet2_nlb", "Private_subnet3_app", "Private_subnet4_app", "Private_subnet5_nginx", "Private_subnet6_nginx", "Private_subnet7_maven" ]
 }
 
 variable "public_subnet_names" {
@@ -26,3 +26,7 @@ variable "public_subnet_names" {
   default = [ "Public_subnet_NLB_NAT_1", "Public_subnet_NLB_NAT_2" ]
 }
 
+# variable "instance_key_pair" {
+#   type        = string
+#   description = "EC2 instance key pair name"
+# }

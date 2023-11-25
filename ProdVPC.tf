@@ -13,6 +13,9 @@ resource "aws_vpc" "prodvpc" {
 # Create an Internet Gateway for public subnets
 resource "aws_internet_gateway" "prod_igw" {
   vpc_id = aws_vpc.prodvpc.id
+  tags = {
+     Name = "Prod_IGW"
+  }
 }
 
 #Create public-subnets
@@ -57,6 +60,11 @@ resource "aws_route_table" "public_RT_prod" {
     cidr_block = "0.0.0.0/0"
   }
 
+  route {
+    transit_gateway_id    = aws_ec2_transit_gateway.Transit-GW-1.id
+    cidr_block = "192.168.0.0/16"
+    
+  }
   tags = {
     Name = "public_RT_prod"
   }
@@ -76,9 +84,14 @@ resource "aws_route_table" "private_RT_prod1" {
     nat_gateway_id = aws_nat_gateway.prod_natgw.id
     cidr_block = "0.0.0.0/0"
   }
+
+  route {
+    transit_gateway_id    = aws_ec2_transit_gateway.Transit-GW-1.id
+    cidr_block = "192.168.0.0/16"
+  }
   
   tags = {
-    Name = "Private_RT_prod1"
+    Name = "Private_RT_InternalOnly"
   }
 
 }
@@ -98,7 +111,7 @@ resource "aws_route_table" "private_RT_prod2" {
   }
   
   tags = {
-    Name = "Private_RT_prod2"
+    Name = "Private_RT_WithNATroute"
   }
 
 }
