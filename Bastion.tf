@@ -1,7 +1,6 @@
 resource "aws_vpc" "Bastion" {
   cidr_block       = "192.168.0.0/16"
   instance_tenancy = "default"
-
   enable_dns_hostnames = true
   enable_dns_support = true
 
@@ -13,11 +12,15 @@ resource "aws_vpc" "Bastion" {
 # Create an Internet Gateway for public subnets
 resource "aws_internet_gateway" "bastion_igw" {
   vpc_id = aws_vpc.Bastion.id
+  tags = {
+    Name = "Bastion_IGW"
+  }
 }
 
 resource "aws_subnet" "bastion-public" {
   vpc_id     = aws_vpc.Bastion.id
   cidr_block = "192.168.1.0/24"
+   
   tags = {
     Name = "Public_subnet_bastion"
   }
@@ -31,7 +34,10 @@ resource "aws_route_table" "public_RT_bastion" {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.bastion_igw.id
   }
-
+   route {
+    transit_gateway_id    = aws_ec2_transit_gateway.Transit-GW-1.id
+    cidr_block = "172.32.0.0/16"
+  }
   tags = {
     Name = "Public_RT_Bastion"
   }
