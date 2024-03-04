@@ -31,7 +31,7 @@ jobs:
       run: mvn -B package --file pom.xml
 
   sonar:
-    name: Build and analyze
+    name: Sonarcloud Analysis
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
